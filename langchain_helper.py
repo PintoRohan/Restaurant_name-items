@@ -5,7 +5,6 @@ from langchain.chains import SequentialChain
 from secret_key import openai_api_key
 
 import os
-
 os.environ['OPENAI_API_KEY'] = openai_api_key
 
 llm = OpenAI(temperature=0.7)
@@ -23,7 +22,7 @@ def generate_restaurant_name_and_items(cuisine):
 
     prompt_items = PromptTemplate(
         input_variables=['restaurant_name'],
-        template="Suggest some menu items for {restaurant_name}. Return it as comma seperated list."
+        template="Suggest some food items {restaurant_name}. Return it as comma seperated list."
     )
 
     food_item_chain = LLMChain(llm=llm, prompt=prompt_items, output_key="menu_items")
@@ -35,7 +34,7 @@ def generate_restaurant_name_and_items(cuisine):
 
     )
 
-    response = chain({'cuisine': 'German'})
+    response = chain({'cuisine': cuisine})
 
     return response
 
