@@ -1,3 +1,7 @@
+
+pip install OpenAI
+pip install langchain
+
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
